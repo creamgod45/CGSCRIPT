@@ -150,7 +150,7 @@ public class cgscript implements TabCompleter, CommandExecutor {
     public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (sender instanceof Player) {
             Player player = (Player) sender;
-            if (Utils.HasPermission(player, "CGSCRIPT.use")) {
+            if (Utils.HasPermission(player, "cgscript.use")) {
                 if (args.length == 1) {
                     List<String> arguments = new ArrayList<>();
                     arguments.add("!說明:選擇一個服務選項");

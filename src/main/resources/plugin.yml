@@ -3,8 +3,9 @@ version: '1'
 main: cg.creamgod45.Script
 api-version: 1.19
 load: STARTUP
-authors: [ creamgod45 ]
+authors: [ CreamGod45 ]
 description: 腳本語言系統，可以透過讀取指令完成命令
+softdepend: [PlaceholderAPI]
 
 commands:
   cgscript:
