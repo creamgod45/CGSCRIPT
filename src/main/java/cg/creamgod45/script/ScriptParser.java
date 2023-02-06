@@ -46,46 +46,6 @@ public class ScriptParser {
             String cmd = command.replace("if.", "");
             IF(command, player, scriptVarible, VarName, cmd);
         }
-       /* else if(command.startsWith("var.set(")){
-            String replace = command.replace("var.set(", "");
-            replace = replace.replace(")","");
-            String[] split = replace.split(",");
-            String varname = split[0];
-            String value = split[1];
-            if (value.startsWith("(i)")) {
-                value = value.replace("(i)", "");
-                scriptVarible.memory.put(varname, Integer.valueOf(value));
-            }else if(value.startsWith("(d)")){
-                value = value.replace("(d)", "");
-                scriptVarible.memory.put(varname, Double.valueOf(value));
-            }else if(value.startsWith("(f)")){
-                value = value.replace("(f)", "");
-                scriptVarible.memory.put(varname, Float.valueOf(value));
-            }else{
-                scriptVarible.memory.put(varname, value);
-            }
-        } else if (command.startsWith("var.set(last_result) in ")) {
-            String replace = command.replace("var.set(last_result) in ", "");
-            Object temp = scriptVarible.memory.get("temp");
-            scriptVarible.memory.remove("temp");
-            scriptVarible.memory.put(replace, temp);
-        } else if (command.startsWith("var.get(")) {
-            String replace = command.replace("var.get(", "");
-            String varName = replace.split("\\)")[0];
-            String point = replace.split(" to ")[1];
-            run(point, player, scriptVarible, String.valueOf(varName));
-        } else if (command.startsWith("player.sendMessage(")) {
-            if(VarName != null){
-                String replace = command.replace("player.sendMessage(", "");
-                replace = replace.replace(")", "");
-                replace = replace.replace("%"+VarName+"%", String.valueOf(scriptVarible.memory.get(VarName)));
-                player.sendMessage(Utils.format(replace));
-            }else{
-                String replace = command.replace("player.sendMessage(", "");
-                replace = replace.replace(")", "");
-                player.sendMessage(Utils.format(replace));
-            }
-        }*/
 
         Utils.ConsoleInfoPrint("command: " + command);
         Utils.ConsoleInfoPrint("player.getName(): " + player.getName());
@@ -117,7 +77,8 @@ public class ScriptParser {
                     run(IFCMD, player, scriptVarible, VarName);
                 }
             }
-        } else if (cmd.toUpperCase().startsWith("MORE;")) {
+        }
+        else if (cmd.toUpperCase().startsWith("MORE;")) {
             String inside = cmd.replace("MORE;", "");
             String[] conditions = inside.split(",");
             int c1 = Integer.parseInt(conditions[0]);
@@ -138,7 +99,8 @@ public class ScriptParser {
                     run(IFCMD, player, scriptVarible, VarName);
                 }
             }
-        } else if (cmd.toUpperCase().startsWith("MOREEQUAL;")) {
+        }
+        else if (cmd.toUpperCase().startsWith("MOREEQUAL;")) {
             String inside = cmd.replace("MOREEQUAL;", "");
             String[] conditions = inside.split(",");
             int c1 = Integer.parseInt(conditions[0]);
@@ -159,7 +121,8 @@ public class ScriptParser {
                     run(IFCMD, player, scriptVarible, VarName);
                 }
             }
-        } else if (cmd.toUpperCase().startsWith("LESS;")) {
+        }
+        else if (cmd.toUpperCase().startsWith("LESS;")) {
             String inside = cmd.replace("LESS;", "");
             String[] conditions = inside.split(",");
             int c1 = Integer.parseInt(conditions[0]);
@@ -180,7 +143,8 @@ public class ScriptParser {
                     run(IFCMD, player, scriptVarible, VarName);
                 }
             }
-        } else if (cmd.toUpperCase().startsWith("LESSEQUAL;")) {
+        }
+        else if (cmd.toUpperCase().startsWith("LESSEQUAL;")) {
             String inside = cmd.replace("LESSEQUAL;", "");
             String[] conditions = inside.split(",");
             int c1 = Integer.parseInt(conditions[0]);
@@ -201,7 +165,8 @@ public class ScriptParser {
                     run(IFCMD, player, scriptVarible, VarName);
                 }
             }
-        } else if (cmd.toUpperCase().startsWith("BOOLEAN;")) {
+        }
+        else if (cmd.toUpperCase().startsWith("BOOLEAN;")) {
             String inside = cmd.replace("BOOLEAN;", "");
             boolean c1 = Boolean.parseBoolean(inside.split(";")[0]);
             Utils.ConsoleInfoPrint(String.valueOf(c1));
@@ -223,30 +188,6 @@ public class ScriptParser {
                 }
             }
         }
-        /*String cmd = command.replace("if ", "");
-            String[] split = cmd.split("=");
-            String c1 = split[0];
-            Utils.ConsoleInfoPrint("c1=" + c1, false);
-            String c2 = split[1].split(";")[0];
-            Utils.ConsoleInfoPrint("c2=" + c2, false);
-            if (c1.equals(c2)) {
-                Utils.ConsoleInfoPrint("split[1]=" + split[1], false);
-                String s = split[1].split(";")[1];
-                Utils.ConsoleInfoPrint("split[1].split=(\";\")" + Arrays.toString(split[1].split(";")), false);
-                Utils.ConsoleInfoPrint("s=" + s, false);
-                String[] split1 = s.split(",");
-                if (split1.length > 1) {
-                    int i =0;
-                    for (String s1 : split1) {
-                        Utils.ConsoleInfoPrint("run(multi) key: "+i+" =>" + s1, false);
-                        run(s1, player, scriptVarible, VarName);
-                        i++;
-                    }
-                } else {
-                    Utils.ConsoleInfoPrint("run(single)=>" + s, false);
-                    run(s, player, scriptVarible, VarName);
-                }
-            }*/
     }
 
     private void Var(String command, Player player, ScriptVarible scriptVarible, String VarName, String cmd) {
