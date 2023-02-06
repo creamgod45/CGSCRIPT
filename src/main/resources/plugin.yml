@@ -1,0 +1,21 @@
+name: Script
+version: '1'
+main: cg.creamgod45.Script
+api-version: 1.19
+load: STARTUP
+authors: [ creamgod45 ]
+description: 腳本語言系統，可以透過讀取指令完成命令
+
+commands:
+  cgscript:
+    description: 腳本指令
+    permission: cgscript.use
+    permission-message: 無法執行指令
+
+permissions:
+  cgscript.use:
+    description: 腳本基本運行權限
+    default: false
+  cgscript.admin:
+    description: 腳本管理員權限
+    default: false
